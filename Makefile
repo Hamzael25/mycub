@@ -8,7 +8,7 @@ HEADERS		= $(addprefix $(INC_DIR), $(INC))
 
 SRC_DIR		=	./src/
 
-SRC			=
+SRC			=	main.c
 
 LIBFT_DIR	=	libft/
 LIBFT_A		=	$(LIBFT_DIR)libft.a
@@ -20,7 +20,7 @@ OBJ_DIR		=	.objs/
 OBJ			=	$(SRC:%.c=$(OBJ_DIR)%.o)
 
 CC			=	cc
-CC_FLAGS	=	-Wextra -Werror -Wall -g3 -O3
+CC_FLAGS	=	-Wextra -Werror -Wall -g3
 
 all:
 	make -C libft
@@ -34,10 +34,8 @@ $(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADERS) $(LIBFT_A) $(LIBFT_DIR)libft.h $
 $(NAME): $(OBJ)
 		$(CC) $(CC_FLAGS) $(OBJ) $(LIBFT_A) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm 
 
-$(LIBFT_A): FORCE
+$(LIBFT_A):
 	$(MAKE) -C ${LIBFT_DIR}
-
-FORCE:
 
 build_libft: $(LIBFT_DIR)
 		$(MAKE) -C $(LIBFT_DIR)

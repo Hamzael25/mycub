@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 09:22:21 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/10/31 08:08:03 by hel-ouar         ###   ########.fr       */
+/*   Created: 2023/10/31 08:02:18 by hel-ouar          #+#    #+#             */
+/*   Updated: 2023/10/31 11:15:34 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub3D.h"
 
-char	*ft_strchr(const char *s, int c)
+int main(int argc, char **argv)
 {
-	int	i;
-
-	i = 0;
-	if (!s || !s[i])
-		return ("true");
-	while (s[i] != (char)c)
-	{
-		if (s[i] == 0)
-			return (0);
-		i++;
-	}
-	return ((char *)s + i);
+	t_play play;
+	
+	(void)argv;
+	if (argc != 2)
+		return (ft_putstr_fd("Error number args\n", 2), 1);
+	play.px = 10;
+	printf("valeur px : %f", play.px);
 }
