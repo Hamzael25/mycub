@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 07:34:41 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/10/31 08:07:56 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/04 10:35:19 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	k = 0;
-	tab = (char **)ft_gc_malloc(sizeof(char *) * ft_countword(s, c));
+	tab = (char **)malloc(sizeof(char *) * ft_countword(s, c));
 	if (!tab)
 		return (NULL);
 	while (s[k] && i < ft_countword(s, c) - 1)
 	{
 		while (s[k] == c)
 			k++;
-		tab[i] = (char *)ft_gc_malloc(sizeof (char) * ft_sizeword(s, c, k));
+		tab[i] = (char *)malloc(sizeof(char) * ft_sizeword(s, c, k));
 		if (!tab[i])
 			return (NULL);
 		j = 0;
