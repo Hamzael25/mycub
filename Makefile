@@ -9,6 +9,12 @@ HEADERS		= $(addprefix $(INC_DIR), $(INC))
 SRC_DIR		=	./src/
 
 SRC			=	main.c
+				parsing/parsing.c
+				parsing/file.c
+				parsing/variable.c
+				utils/parsing_utils.c
+				utils/init.c
+				utils/free.c
 
 LIBFT_DIR	=	libft/
 LIBFT_A		=	$(LIBFT_DIR)libft.a

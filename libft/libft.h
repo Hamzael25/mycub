@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 12:28:32 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/10/31 11:53:59 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/04 08:33:57 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,8 @@ void	ft_sort_int_tab(int *tab, int size);
 char	**ft_split2(char const *s, char c, char e);
 
 char	**ft_split3(char const *s, char c, char e, char f);
+
+char	**ft_split4(char const *s);
 
 int		ft_dprintf(const char *str, ...);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:02:42 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/10/31 11:13:37 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/04 09:05:57 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,43 @@
 
 typedef struct	s_play
 {
-	float	px;
+	float	posx;
+	float	posy;
 }				t_play;
 
-// typedef struct	s_play
-// {
-	
-// }				t_play;
+typedef struct	s_parse
+{
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*ceiling;
+	char	*floor;
+	char	**map;
+	int		color_floor[3];
+	int		color_ceiling[3];
+}				t_parse;
 
-// typedef struct	s_data
-// {
-	
-// }				t_data;
+typedef struct s_get_map
+{
+	char				*line;
+	struct s_get_map	*next;
+}				t_get_map;
+
+typedef struct	s_data
+{
+	t_parse	*parse;
+	t_play	*play;
+}				t_data;
+
+int		init_struct(t_data *data);
+
+void	ft_free_all(t_data *data);
+
+int		check_valid_file(t_parse *parse, int fd);
+
+int		get_variable(t_parse *parse, char **split_line);
+
+int		check_color(char **split_color, char *color, int i, int nb);
 
 #endif
