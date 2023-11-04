@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:02:42 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 09:05:57 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/04 09:26:31 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,24 @@ typedef struct	s_data
 	t_play	*play;
 }				t_data;
 
-int		init_struct(t_data *data);
+int			init_struct(t_data *data);
 
-void	ft_free_all(t_data *data);
+void		ft_free_all(t_data *data);
 
-int		check_valid_file(t_parse *parse, int fd);
+int			check_valid_file(t_parse *parse, int fd);
 
-int		get_variable(t_parse *parse, char **split_line);
+int			get_variable(t_parse *parse, char **split_line);
 
-int		check_color(char **split_color, char *color, int i, int nb);
+int			check_color(char **split_color, char *color, int i, int nb);
+
+t_get_map	*lstlast(t_get_map *lst);
+
+t_get_map	*create_cell(char *line);
+
+void		ft_lstad_back(t_get_map **lst, t_get_map *new);
+
+int			lstsize(t_get_map *lst);
+
+void		lstclear(t_get_map **lst);
 
 #endif

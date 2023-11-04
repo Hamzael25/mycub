@@ -15,6 +15,7 @@ SRC			=	main.c
 				utils/parsing_utils.c
 				utils/init.c
 				utils/free.c
+				utils/list.c
 
 LIBFT_DIR	=	libft/
 LIBFT_A		=	$(LIBFT_DIR)libft.a
