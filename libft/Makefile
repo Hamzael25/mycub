@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+         #
+#    By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 15:15:32 by hel-ouar          #+#    #+#              #
-#    Updated: 2023/11/04 08:33:06 by hamzaelouar      ###   ########.fr        #
+#    Updated: 2023/11/04 09:45:12 by hel-ouar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_split4.c ft_dnbr.c ft_dput.c ft_dprintf.c ft_gc_ctx_create.c \
 		ft_gc_ctx_delete.c ft_gc_ctx_transfer.c ft_gc_ctx_wild_manip.c \
 		ft_gc_global.c ft_gc_ptr_utils.c ft_gc_static.c ft_split_token.c \
-		ft_strncpy.c ft_split_space.c ft_strcpy2.c
+		ft_strncpy.c ft_strndup.c ft_split_space.c ft_strcpy2.c
 		
 OBJS = $(SRCS:.c=.o)
 NAME = libft.a

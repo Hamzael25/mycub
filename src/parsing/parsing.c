@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 09:08:13 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/04 10:04:02 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int check_file(char *map, char *ext)
 	tmp = ft_split(map, '/');
 	if (!tmp)
 		return (ft_free_tab(tmp), 1);
-	filename = tmp[ft_strlen_dtab(tmp)];
+	filename = tmp[ft_strlen_dtab(tmp) - 1];
 	while (*filename)
 		filename++;
 	filename--;

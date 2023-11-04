@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 08:02:18 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 09:31:48 by hel-ouar         ###   ########.fr       */
+/*   Created: 2022/11/09 15:08:57 by hel-ouar          #+#    #+#             */
+/*   Updated: 2023/11/04 09:44:23 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strndup(char *s, size_t n)
 {
-	t_data data;
+	char	*new;
 	
-	(void)argv;
-	if (argc != 2)
-		return (ft_putstr_fd("Error number args\n", 2), 1);
-	if (!init_struct(&data))
-		return (ft_free_all(&data), 1);
-	if (parsing(argv[1], &data))
-	{
-		printf("test");
-		// return (ft_free_all(&data), 1);
-	}
+	new = malloc(n + 1);
+	if (!new)
+		return (NULL);
+	ft_strncpy(new, s, n);
+	return (new[n] = '\0', new);
 }

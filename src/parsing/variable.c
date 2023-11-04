@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variable.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 08:40:24 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/04 09:55:43 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ int	get_texture(char **path, char **split_line)
 
 int	set_color(t_parse *parse, char **split_line)
 {
-	if (!ft_strncmp(split_line[0], "C\0", 2) && !parse->color_ceiling)
+	if (!ft_strncmp(split_line[0], "C\0", 2))
 	{
-		if (split_line[1] && get_colors(parse, split_line[1], 1))
+		if (split_line[1] && get_color(parse, split_line[1], 1))
 			return (1);
 	}
-	else if (!ft_strncmp(split_line[0], "F\0", 2) && !parse->color_floor)
+	else if (!ft_strncmp(split_line[0], "F\0", 2))
 	{
 		if (split_line[1] && get_color(parse, split_line[1], 0))
 			return (1);

@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 08:09:55 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/04 09:37:43 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+int	get_cell_map(t_get_map **tmp_map, char *line);
+int	get_map(t_get_map **tmp_map, t_parse *parse);
+int	check_variable(t_parse *parse);
+int	check_valid_file(t_parse *parse, int fd);
+
 
 int	variable(char *line, t_parse *parse, int *flg)
 {
@@ -19,7 +25,7 @@ int	variable(char *line, t_parse *parse, int *flg)
 	split_line = ft_split(line, ' ');
 	if (!split_line)
 		return (ft_free_tab(split_line), 1);
-	if (split_line[0] == '\n' && !split_line[1])
+	if (*split_line[0] == ' ' && !split_line[1])
 		return (ft_free_tab(split_line), 0);
 	if (split_line[1])
 	{
@@ -94,7 +100,7 @@ int	check_valid_file(t_parse *parse, int fd)
 	{
 		if (line)
 			free(line);
-		line = get_next_line(fd);
+		line = get_next_line_gnl(fd);
 		if (!line)
 		{
 			if (check_variable(parse) || get_map(&tmp_map, parse))

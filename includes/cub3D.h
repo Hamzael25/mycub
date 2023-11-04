@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:02:42 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 09:26:31 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/04 09:32:30 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct	s_data
 int			init_struct(t_data *data);
 
 void		ft_free_all(t_data *data);
+
+int			parsing(char *map, t_data *data);
 
 int			check_valid_file(t_parse *parse, int fd);
 
