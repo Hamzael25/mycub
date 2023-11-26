@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 09:37:43 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:00:09 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include "../../includes/cub3d.h"
 
 int	get_cell_map(t_get_map **tmp_map, char *line);
 int	get_map(t_get_map **tmp_map, t_parse *parse);

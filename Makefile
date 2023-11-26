@@ -1,59 +1,76 @@
-NAME		=	cub3D
 
-INC			=	cub3D.h
+# Nom de l'exécutable
+NAME = ./cub3D
+NAME_SHORT = cub3D
 
-INC_DIR		=	./includes/
+# Compilateur et options de compilation
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-HEADERS		= $(addprefix $(INC_DIR), $(INC))
+# Affichage prompt
+_CLEAR      = \033[0K\r\c
+_OK         = [\033[32mOK\033[0m]
 
-SRC_DIR		=	./src/
+# Répertoires
+SRC_DIR = srcs
+OBJ_DIR = .objs
+INC_DIR = includes
+LIBFT_DIR = libft
+MLX_DIR = mlx_linux
 
-SRC			=	main.c\
-				parsing/parsing.c\
-				parsing/file.c\
-				parsing/variable.c\
-				utils/parsing_utils.c\
-				utils/init.c\
-				utils/free.c\
-				utils/list.c\
+# Librairies
+MLX_A = mlx_linux/libmlx.a
+LIBFT_A = libft/libft.a
 
-LIBFT_DIR	=	libft/
-LIBFT_A		=	$(LIBFT_DIR)libft.a
-LIBFT_INC	=	libft
+# Dépendances générales
+HEADER = $(INC_DIR)/cub3d.h
 
-MLX_A		=	mlx_linux/libmlx.a
+# Chemins complets des fichiers source pour chaque sous-dossier
+SRCS_PARSER = $(addprefix $(SRC_DIR)/parser/, file.c parsing.c variable.c)
+SRCS_UTILS = $(addprefix $(SRC_DIR)/utils/, init.c free.c list.c parsing_utils.c)
+SRCS_MAIN = $(addprefix $(SRC_DIR)/, main.c)
 
-OBJ_DIR		=	.objs/
-OBJ			=	$(SRC:%.c=$(OBJ_DIR)%.o)
+# Fichiers objets mandatory correspondants
+OBJS_PARSER = $(patsubst $(SRC_DIR)/parser/%.c, $(OBJ_DIR)/parser/%.o, $(SRCS_PARSER))
+OBJS_UTILS = $(patsubst $(SRC_DIR)/utils/%.c, $(OBJ_DIR)/utils/%.o, $(SRCS_UTILS))
+OBJS_MAIN = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS_MAIN))
 
-CC			=	cc
-CC_FLAGS	=	-Wextra -Werror -Wall -g3
+# Compilation et édition de liens
+all: $(LIBFT_A) $(MLX_A) $(NAME)
 
-all:
-	make -C libft
-	make -C mlx_linux
-	make ${NAME}
+# Règle pour construire l'exécutable
+$(NAME): $(OBJS_UTILS) $(OBJS_PARSER) $(OBJS_MAIN)
+	@$(CC) $(CFLAGS) $^ -o $@ -L$(MLX_DIR) -L$(LIBFT_DIR) -lmlx -lft -lXext -lX11 -lm
+	@echo "$(_OK) $(NAME_SHORT) compiled"
 
-$(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADERS) $(LIBFT_A) $(LIBFT_DIR)libft.h $(MLX_A)
-		mkdir -p $(@D)
-		$(CC) $(CC_FLAGS) -I$(INC_DIR) -I$(LIBFT_INC) -I/usr/include -Imlx_linux -c $< -o $@
+# Construction des fichiers objets mandatory
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
+	@echo "[..] $(NAME_SHORT)... compiling $*.c\r\c"
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+	@echo "$(_CLEAR)"
 
-$(NAME): $(OBJ)
-		$(CC) $(CC_FLAGS) $(OBJ) $(LIBFT_A) -o $@ -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm 
-
+# Règle pour construire la libft et la mlxpour la version mandatory
 $(LIBFT_A):
-	$(MAKE) -C ${LIBFT_DIR}
+	@echo "[..] libft... compiling $*.c\r\c"
+	@$(MAKE) -C $(LIBFT_DIR) -s
+	@echo "$(_CLEAR)"
 
-build_libft: $(LIBFT_DIR)
-		$(MAKE) -C $(LIBFT_DIR)
+$(MLX_A):
+	@echo "[..] mlx_linux... compiling $*.c\r\c"
+	@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
+	@echo "$(_CLEAR)"
 
+# Règles de nettoyage
 clean:
-		$(MAKE) -C libft fclean
-		rm -rf $(OBJ_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean -s
+	@$(MAKE) -C $(MLX_DIR) clean > /dev/null 2>&1
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-		rm -rf $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean -s
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re build_libft
+.PHONY: all clean fclean re

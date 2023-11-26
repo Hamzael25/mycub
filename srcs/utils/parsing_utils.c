@@ -6,11 +6,11 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 08:40:42 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/26 16:00:36 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include "../../includes/cub3d.h"
 
 int	check_color(char **split_color, char *color, int i, int nb)
 {
