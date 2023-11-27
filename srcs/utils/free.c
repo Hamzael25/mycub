@@ -6,19 +6,19 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/26 16:00:26 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/27 01:20:09 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 void	free_struct(t_data *data);
 void	free_parse(t_parse *parse);
 
 void	ft_free_all(t_data *data)
 {
-	free_struct(data);
 	free_parse(data->parse);
+	free_struct(data);
 }
 
 void	free_struct(t_data *data)

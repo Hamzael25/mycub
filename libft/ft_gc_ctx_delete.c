@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gc_ctx_delete.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:04:55 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/10/31 08:04:56 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:01:08 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "ft_gc_internal.h"
 

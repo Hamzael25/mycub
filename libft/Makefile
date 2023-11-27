@@ -3,14 +3,28 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+         #
+#    By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 15:15:32 by hel-ouar          #+#    #+#              #
-#    Updated: 2023/11/04 09:45:12 by hel-ouar         ###   ########.fr        #
+#    Updated: 2023/11/27 02:16:24 by hamzaelouar      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
+# Nom de l'exécutable
+NAME = libft.a
+
+# Compilateur et options de compilation
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+
+# Répertoires objets
+OBJ_DIR = .objs
+
+# Dépendances générales
+HEADER = libft.h
+
+# Chemins complets des fichiers source pour chaque sous-dossier
+SRCS =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c \
 		ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c \
@@ -25,29 +39,29 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_gc_ctx_delete.c ft_gc_ctx_transfer.c ft_gc_ctx_wild_manip.c \
 		ft_gc_global.c ft_gc_ptr_utils.c ft_gc_static.c ft_split_token.c \
 		ft_strncpy.c ft_strndup.c ft_split_space.c ft_strcpy2.c
-		
-OBJS = $(SRCS:.c=.o)
-NAME = libft.a
-HEAD = libft.h
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
-RM = rm -f
 
-%.o: %.c Makefile ${HEAD}
-		${CC} ${FLAGS} -I./ -c $< -o $@
+# Fichiers objets mandatory correspondants
+OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
+# Compilation et édition de liens
 all: $(NAME)
 
+# Règle pour construire l'exécutable
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-	
+	@ar rcs $(NAME) $(OBJS)
+
+# Construction des fichiers objets mandatory
+$(OBJ_DIR)/%.o: %.c $(HEADER)
+	@mkdir -p $(@D)
+	@${CC} ${FLAGS} -I./ -c $< -o $@
+
+# Règles de nettoyage
 clean:
-	$(RM) $(OBJS)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	@rm -f $(NAME)
 
-re: fclean 
-	make all
+re: fclean all
 
 .PHONY: all clean fclean re

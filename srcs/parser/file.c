@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/26 16:00:09 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/27 02:19:14 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	get_cell_map(t_get_map **tmp_map, char *line);
 int	get_map(t_get_map **tmp_map, t_parse *parse);
 int	check_variable(t_parse *parse);
 int	check_valid_file(t_parse *parse, int fd);
-
 
 int	variable(char *line, t_parse *parse, int *flg)
 {
@@ -104,7 +103,7 @@ int	check_valid_file(t_parse *parse, int fd)
 		if (!line)
 		{
 			if (check_variable(parse) || get_map(&tmp_map, parse))
-				return (ft_putstr_fd("Error\n", 2), \
+				return (ft_putstr_fd("Error in file\n", 2), \
 					lstclear(&tmp_map), 1);
 			return (free(line), lstclear(&tmp_map), 0);
 		}
@@ -112,6 +111,6 @@ int	check_valid_file(t_parse *parse, int fd)
 			if (get_cell_map(&tmp_map, line))
 				return (free(line), 1);
 		if (!flg && variable(line, parse, &flg))
-			return (ft_putstr_fd("Error", 2), free(line), 1);
+			return (ft_putstr_fd("Error in file", 2), free(line), 1);
 	}
 }

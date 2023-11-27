@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:02:42 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 09:32:30 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:22:55 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,26 @@
 # include <math.h>
 # include <unistd.h>
 
-typedef struct	s_play
+typedef struct s_play
 {
 	float	posx;
 	float	posy;
 }				t_play;
 
-typedef struct	s_parse
+typedef struct s_parse
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*ceiling;
-	char	*floor;
-	char	**map;
-	int		color_floor[3];
-	int		color_ceiling[3];
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	char			*ceiling;
+	char			*floor;
+	char			**map;
+	int				color_floor[3];
+	int				color_ceiling[3];
+	unsigned int	color_floor_hexa;
+	unsigned int	color_ceiling_hexa;
+	char			orientation;
 }				t_parse;
 
 typedef struct s_get_map
@@ -49,7 +52,7 @@ typedef struct s_get_map
 	struct s_get_map	*next;
 }				t_get_map;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_parse	*parse;
 	t_play	*play;
@@ -60,6 +63,8 @@ int			init_struct(t_data *data);
 void		ft_free_all(t_data *data);
 
 int			parsing(char *map, t_data *data);
+
+int			parsing_map(t_parse *parse);
 
 int			check_valid_file(t_parse *parse, int fd);
 
@@ -76,5 +81,25 @@ void		ft_lstad_back(t_get_map **lst, t_get_map *new);
 int			lstsize(t_get_map *lst);
 
 void		lstclear(t_get_map **lst);
+
+int			check_char(char *str, int *p, t_parse *parse);
+
+void		replace_space(char *line);
+
+int			only_wall(char *str);
+
+int			check_wall(t_parse *parse, int i, int j, int save);
+
+int			check_player(char **map);
+
+int			is_player(char p);
+
+int			check_map(char **map);
+
+int			nb_of_space(char **str, int *i);
+
+int			check_path(t_data *data);
+
+int			check_open_file(t_data *data, char *file, int flg);
 
 #endif

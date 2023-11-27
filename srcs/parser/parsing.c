@@ -6,26 +6,31 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/26 16:00:16 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/27 02:20:36 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int check_file(char *map, char *ext);
-int check_open_file(t_data *data, char *file, int flg);
+int			check_file(char *map, char *ext);
+static void	set_color(t_data *data);
 
 int	parsing(char *map, t_data *data)
 {
 	if (check_file(map, "buc.") || check_open_file(data, map, 1))
 		return (1);
+	if (parsing_map(data->parse) || check_map(data->parse->map))
+		return (ft_putstr_fd("Error\nMap Wrong\n", 2), 1);
+	set_color(data);
+	if (check_path(data))
+		return (ft_putstr_fd("Error\nWrong Path\n", 2), 1);
 	return (0);
 }
 
-int check_file(char *map, char *ext)
+int	check_file(char *map, char *ext)
 {
-	char **tmp;
-	char *filename;
+	char	**tmp;
+	char	*filename;
 
 	tmp = ft_split(map, '/');
 	if (!tmp)
@@ -65,4 +70,44 @@ int	check_open_file(t_data *data, char *file, int flg)
 			return (1);
 	}
 	return (0);
+}
+
+int	parsing_map(t_parse *parse)
+{
+	int	i;
+	int	p;
+
+	i = 0;
+	p = 0;
+	while (parse->map[i])
+	{
+		if (check_char(parse->map[i], &p, parse))
+			return (1);
+		if (ft_strchr(parse->map[i], ' '))
+			replace_space(parse->map[i]);
+		i++;
+	}
+	if (p != 1)
+		return (1);
+	if (only_wall(parse->map[0])
+		|| only_wall(parse->map[ft_strlen_dtab(parse->map) - 1])
+		|| check_wall(parse, 0, 0, 0) || check_player(parse->map))
+		return (1);
+	return (0);
+}
+
+static void	set_color(t_data *data)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = data->parse->color_ceiling[0];
+	g = data->parse->color_ceiling[1];
+	b = data->parse->color_ceiling[2];
+	data->parse->color_ceiling_hexa = (r * 65536) + (g * 256) + b;
+	r = data->parse->color_floor[0];
+	g = data->parse->color_floor[1];
+	b = data->parse->color_floor[2];
+	data->parse->color_floor_hexa = (r * 65536) + (g * 256) + b;
 }

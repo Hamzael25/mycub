@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/26 16:00:36 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/11/27 02:17:48 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,58 @@ int	check_color(char **split_color, char *color, int i, int nb)
 			return (1);
 	}
 	if (i != 3)
+		return (1);
+	return (0);
+}
+
+int	check_char(char *str, int *p, t_parse *parse)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != '0' && str[i] != '1' && str[i] != ' ' && \
+		str[i] != '\n' && str[i] != 'N' && str[i] != 'S' && \
+		str[i] != 'E' && str[i] != 'W')
+			return (1);
+		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
+		{
+			parse->orientation = str[i];
+			*p += 1;
+		}
+		i++;
+	}
+	return (0);
+}
+
+void	replace_space(char *line)
+{
+	while (*line)
+	{
+		if (*line == ' ')
+			*line = 'x';
+		line++;
+	}
+}
+
+int	only_wall(char *str)
+{
+	while (*str && *str != '\n')
+	{
+		if (*str != '1')
+		{
+			if (*str != 'x')
+				return (1);
+		}
+		str++;
+	}
+	return (0);
+}
+
+int	is_player(char p)
+{
+	if (p == 'N' || p == 'S' || p == 'E' || p == 'W')
 		return (1);
 	return (0);
 }

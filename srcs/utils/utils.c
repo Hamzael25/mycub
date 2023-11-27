@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 09:51:13 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/27 02:00:37 by hamzaelouar      ###   ########.fr       */
+/*   Created: 2023/11/27 02:18:05 by hamzaelouar       #+#    #+#             */
+/*   Updated: 2023/11/27 02:18:06 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/cub3d.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	is_space(char *str)
 {
-	size_t			i;
-	unsigned char	*ptr;
-
-	i = 0;
-	ptr = (unsigned char *)s;
-	while (i < n)
+	while (*str)
 	{
-		if (ptr[i] != (unsigned char)c && i < n)
-			i++;
+		if (*str == 'x')
+			str++;
+		else if (*str == '\n')
+			str++;
 		else
-		{
-			if (i < n)
-				return ((void *)(s + i));
-		}
+			return (0);
 	}
-	return (NULL);
+	return (1);
+}
+
+int	nb_of_space(char **str, int *i)
+{
+	int	cpt;
+
+	cpt = 0;
+	while (is_space(str[*i]))
+	{
+		(*i)++;
+		cpt++;
+	}
+	return (cpt);
 }

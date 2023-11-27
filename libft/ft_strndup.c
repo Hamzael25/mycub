@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:08:57 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 09:44:23 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:01:49 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strndup(char *s, size_t n)
 {
 	char	*new;
-	
+
 	new = malloc(n + 1);
 	if (!new)
 		return (NULL);

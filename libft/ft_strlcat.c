@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:32:54 by hel-ouar          #+#    #+#             */
-/*   Updated: 2022/11/16 12:46:28 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:02:06 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*ft_strncat(char *dest, const char *src, unsigned int nb)
 	while (dest[i] != '\0')
 		i++;
 	while (src[j] != '\0' && j < nb)
-	{	
+	{
 		dest[i] = src[j];
 		i++;
 		j++;

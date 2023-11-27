@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gc_global.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:05:15 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/10/31 08:05:18 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:01:25 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_gc_internal.h"
 

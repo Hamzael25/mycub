@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gc_ctx_wild_manip.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:05:07 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/10/31 08:05:10 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/27 01:59:04 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_gc_internal.h"
 

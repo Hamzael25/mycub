@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 12:28:32 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/04 09:44:43 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/27 01:28:05 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,19 +139,15 @@ void	ft_putnbr_printf(int n, int *len);
 
 char	*get_next_line_gnl(int fd);
 
-char	*ft_strjoin_gnl(char *s1, char *s2);
+int		ft_strerchr(char *s, char c);
 
-char	*ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize);
+char	*ft_read(int fd, char *tmp);
 
-size_t	ft_strlen_gnl(const char *s);
+char	*ft_strjoint(char *tmp, char *buffer);
 
-int		ft_strchr_gnl(const char *s, int c);
+char	*ft_implement(char *tmp);
 
-char	*ft_newtmp_gnl(char *tmp);
-
-char	*ft_newline_gnl(char *tmp);
-
-char	*ft_tmp_gnl(int fd, char *tmp);
+char	*ft_clean(char *tmp);
 
 void	ft_free_tab(char **tab);
 

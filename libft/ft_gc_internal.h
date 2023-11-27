@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gc_internal.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:05:24 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/10/31 08:05:26 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/11/27 01:59:28 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FT_GC_INTERNAL_H
 # define FT_GC_INTERNAL_H
