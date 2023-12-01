@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 12:28:32 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/27 01:28:05 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/01 21:29:30 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "ft_gc.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 1
 # endif
 
 typedef struct s_list
@@ -29,6 +29,12 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_map
+{
+	char			*line;
+	struct s_map	*next;
+}					t_map;
 
 int		ft_atoi(const char *str);
 
@@ -74,6 +80,8 @@ void	ft_putstr_fd(char *s, int fd);
 
 char	**ft_split(char const *s, char c);
 
+char	**ft_split_cub(char const *s, char c);
+
 char	*ft_strchr(const char *s, int c);
 
 char	*ft_strdup(const char *s1);
@@ -86,7 +94,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
-int		ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 
 int		ft_strlen_dtab(char **s);
 
@@ -123,6 +131,16 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+
+t_map	*lstlast_map(t_map *lst);
+
+t_map	*create_cell_map(char *line);
+
+void	ft_lstadd_back_map(t_map **lst, t_map *new);
+
+int		lstsize_map(t_map *lst);
+
+void	lstclear_map(t_map **lst);
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 

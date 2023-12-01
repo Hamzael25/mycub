@@ -6,14 +6,11 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/27 02:20:36 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/01 22:20:45 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-int			check_file(char *map, char *ext);
-static void	set_color(t_data *data);
 
 int	parsing(char *map, t_data *data)
 {
@@ -21,7 +18,7 @@ int	parsing(char *map, t_data *data)
 		return (1);
 	if (parsing_map(data->parse) || check_map(data->parse->map))
 		return (ft_putstr_fd("Error\nMap Wrong\n", 2), 1);
-	set_color(data);
+	set_color_c_f(data);
 	if (check_path(data))
 		return (ft_putstr_fd("Error\nWrong Path\n", 2), 1);
 	return (0);
@@ -32,7 +29,7 @@ int	check_file(char *map, char *ext)
 	char	**tmp;
 	char	*filename;
 
-	tmp = ft_split(map, '/');
+	tmp = ft_split_cub(map, '/');
 	if (!tmp)
 		return (ft_free_tab(tmp), 1);
 	filename = tmp[ft_strlen_dtab(tmp) - 1];
@@ -96,7 +93,7 @@ int	parsing_map(t_parse *parse)
 	return (0);
 }
 
-static void	set_color(t_data *data)
+void	set_color_c_f(t_data *data)
 {
 	int	r;
 	int	g;

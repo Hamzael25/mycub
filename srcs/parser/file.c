@@ -6,14 +6,14 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/27 02:19:14 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/01 23:11:50 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	get_cell_map(t_get_map **tmp_map, char *line);
-int	get_map(t_get_map **tmp_map, t_parse *parse);
+int	get_cell_map(t_map **tmp_map, char *line);
+int	get_map(t_map **tmp_map, t_parse *parse);
 int	check_variable(t_parse *parse);
 int	check_valid_file(t_parse *parse, int fd);
 
@@ -21,7 +21,7 @@ int	variable(char *line, t_parse *parse, int *flg)
 {
 	char	**split_line;
 
-	split_line = ft_split(line, ' ');
+	split_line = ft_split_cub(line, ' ');
 	if (!split_line)
 		return (ft_free_tab(split_line), 1);
 	if (*split_line[0] == ' ' && !split_line[1])
@@ -38,21 +38,21 @@ int	variable(char *line, t_parse *parse, int *flg)
 	return (ft_free_tab(split_line), 0);
 }
 
-int	get_cell_map(t_get_map **tmp_map, char *line)
+int	get_cell_map(t_map **tmp_map, char *line)
 {
-	t_get_map	*cell;
+	t_map	*cell;
 
-	cell = create_cell(line);
+	cell = create_cell_map(line);
 	if (!cell)
 		return (1);
-	ft_lstad_back(tmp_map, cell);
+	ft_lstadd_back_map(tmp_map, cell);
 	return (0);
 }
 
-int	get_map(t_get_map **tmp_map, t_parse *parse)
+int	get_map(t_map **tmp_map, t_parse *parse)
 {
 	int			i;
-	t_get_map	*head;
+	t_map		*head;
 
 	head = *tmp_map;
 	i = 0;
@@ -90,7 +90,7 @@ int	check_valid_file(t_parse *parse, int fd)
 {
 	char		*line;
 	int			flg;
-	t_get_map	*tmp_map;
+	t_map		*tmp_map;
 
 	flg = 0;
 	line = NULL;
@@ -104,13 +104,13 @@ int	check_valid_file(t_parse *parse, int fd)
 		{
 			if (check_variable(parse) || get_map(&tmp_map, parse))
 				return (ft_putstr_fd("Error in file\n", 2), \
-					lstclear(&tmp_map), 1);
-			return (free(line), lstclear(&tmp_map), 0);
+					lstclear_map(&tmp_map), 1);
+			return (free(line), lstclear_map(&tmp_map), 0);
 		}
 		if (flg)
 			if (get_cell_map(&tmp_map, line))
 				return (free(line), 1);
 		if (!flg && variable(line, parse, &flg))
-			return (ft_putstr_fd("Error in file", 2), free(line), 1);
+			return (ft_putstr_fd("Error in file\n", 2), free(line), 1);
 	}
 }

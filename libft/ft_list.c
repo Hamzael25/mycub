@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.c                                             :+:      :+:    :+:   */
+/*   ft_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/26 16:00:33 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/01 17:33:48 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "libft.h"
 
-t_get_map	*lstlast(t_get_map *lst)
+t_map	*lstlast_map(t_map *lst)
 {
 	while (lst)
 	{
@@ -23,11 +23,11 @@ t_get_map	*lstlast(t_get_map *lst)
 	return (lst);
 }
 
-t_get_map	*create_cell(char *line)
+t_map	*create_cell_map(char *line)
 {
-	t_get_map	*cell;
+	t_map	*cell;
 
-	cell = malloc(sizeof(t_get_map));
+	cell = malloc(sizeof(t_map));
 	if (!cell)
 		return (NULL);
 	cell->line = ft_strdup(line);
@@ -35,15 +35,15 @@ t_get_map	*create_cell(char *line)
 	return (cell);
 }
 
-void	ft_lstad_back(t_get_map **lst, t_get_map *new)
+void	ft_lstadd_back_map(t_map **lst, t_map *new)
 {
-	t_get_map	*last;
+	t_map	*last;
 
 	if (lst)
 	{
 		if (*lst)
 		{
-			last = lstlast(*lst);
+			last = lstlast_map(*lst);
 			last->next = new;
 		}
 		else
@@ -51,10 +51,10 @@ void	ft_lstad_back(t_get_map **lst, t_get_map *new)
 	}
 }
 
-int	lstsize(t_get_map *lst)
+int	lstsize_map(t_map *lst)
 {
 	int			i;
-	t_get_map	*cpy;
+	t_map		*cpy;
 
 	cpy = lst;
 	i = 0;
@@ -66,9 +66,9 @@ int	lstsize(t_get_map *lst)
 	return (i);
 }
 
-void	lstclear(t_get_map **lst)
+void	lstclear_map(t_map **lst)
 {
-	t_get_map	*tmp;
+	t_map	*tmp;
 
 	if (lst)
 	{

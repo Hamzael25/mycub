@@ -4,7 +4,7 @@ NAME = ./cub3D
 NAME_SHORT = cub3D
 
 # Compilateur et options de compilation
-CC = gcc
+CC = gcc -g3
 CFLAGS = -Wall -Wextra -Werror
 
 # Affichage prompt
@@ -27,12 +27,14 @@ HEADER = $(INC_DIR)/cub3d.h
 
 # Chemins complets des fichiers source pour chaque sous-dossier
 SRCS_MAP = $(addprefix $(SRC_DIR)/map/, check_map.c)
+SRCS_PLAY = $(addprefix $(SRC_DIR)/play/, game.c key.c)
 SRCS_PARSER = $(addprefix $(SRC_DIR)/parser/, file.c parsing.c variable.c)
-SRCS_UTILS = $(addprefix $(SRC_DIR)/utils/, init.c free.c list.c parsing_utils.c utils.c)
+SRCS_UTILS = $(addprefix $(SRC_DIR)/utils/, init.c free.c parsing_utils.c utils.c)
 SRCS_MAIN = $(addprefix $(SRC_DIR)/, main.c)
 
 # Fichiers objets mandatory correspondants
 OBJS_MAP = $(patsubst $(SRC_DIR)/map/%.c, $(OBJ_DIR)/map/%.o, $(SRCS_MAP))
+OBJS_PLAY = $(patsubst $(SRC_DIR)/play/%.c, $(OBJ_DIR)/play/%.o, $(SRCS_PLAY))
 OBJS_PARSER = $(patsubst $(SRC_DIR)/parser/%.c, $(OBJ_DIR)/parser/%.o, $(SRCS_PARSER))
 OBJS_UTILS = $(patsubst $(SRC_DIR)/utils/%.c, $(OBJ_DIR)/utils/%.o, $(SRCS_UTILS))
 OBJS_MAIN = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS_MAIN))
@@ -41,7 +43,7 @@ OBJS_MAIN = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS_MAIN))
 all: $(LIBFT_A) $(MLX_A) $(NAME)
 
 # Règle pour construire l'exécutable
-$(NAME): $(OBJS_UTILS) $(OBJS_PARSER) $(OBJS_MAIN) $(OBJS_MAP)
+$(NAME): $(OBJS_UTILS) $(OBJS_PARSER) $(OBJS_MAIN) $(OBJS_MAP) $(OBJS_PLAY)
 	@$(CC) $(CFLAGS) $^ -o $@ -L$(MLX_DIR) -L$(LIBFT_DIR) -lmlx -lft -lXext -lX11 -lm
 	@echo "$(_OK) $(NAME_SHORT) compiled"
 

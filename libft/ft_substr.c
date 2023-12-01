@@ -3,37 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:30:17 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/10/31 08:09:27 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2023/12/01 23:08:36 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static char	*ft_test(char const *s, unsigned int start, size_t len, char *final)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[start] && i < len)
+	{
+		final[i] = s[start];
+		i++;
+		start++;
+	}
+	final[i] = 0;
+	return (final);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*ptr;
-	size_t			j;
-	size_t			i;
+	char	*final;
 
-	i = start;
-	j = 0;
-	if (!s || start > ft_strlen(s))
-		return (ft_strdup(""));
-	if (len > ft_strlen(&s[start]))
-		ptr = ft_gc_malloc(sizeof(char) * (ft_strlen(&s[start]) + 1));
-	else
-		ptr = ft_gc_malloc(sizeof(char) * (len + 1));
-	if (!ptr)
+	if (!s)
 		return (NULL);
-	while (s[i] && j < len)
+	else if (start >= ft_strlen(s))
 	{
-		ptr[j] = s[i];
-		j++;
-		i++;
+		final = malloc(sizeof(char));
+		if (!final)
+			return (NULL);
+		final[0] = 0;
+		return (final);
 	}
-	ptr[j] = '\0';
-	return (ptr);
+	else if (len > ft_strlen(s + start))
+	{
+		final = malloc(sizeof(char) * ft_strlen(s + start) + 1);
+		if (!final)
+			return (NULL);
+		return (ft_test(s, start, len, final));
+	}
+	final = malloc(sizeof(char) * len + 1);
+	if (!final)
+		return (NULL);
+	return (ft_test(s, start, len, final));
 }

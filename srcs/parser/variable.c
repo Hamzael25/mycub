@@ -6,16 +6,11 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/11/26 16:00:22 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/01 17:52:21 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-int	get_texture(char **path, char **split_line);
-int	set_texture(t_parse *parse, char **split_line);
-int	set_color(t_parse *parse, char **split_line);
-int	get_color(t_parse *parse, char *color, int flg);
 
 int	get_variable(t_parse *parse, char **split_line)
 {

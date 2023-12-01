@@ -6,7 +6,7 @@
 #    By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 15:15:32 by hel-ouar          #+#    #+#              #
-#    Updated: 2023/11/27 02:16:24 by hamzaelouar      ###   ########.fr        #
+#    Updated: 2023/12/01 20:08:09 by hamzaelouar      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c \
 		ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c \
-		ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c \
+		ft_strlen.c ft_strmapi.c ft_strncmp.c ft_substr.c ft_strnstr.c ft_strrchr.c \
 		ft_strtrim.c ft_tolower.c ft_toupper.c ft_nbr.c ft_put.c \
 		ft_printf.c get_next_line_utils.c get_next_line.c ft_free.c\
 		ft_sort_int_tab.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c\
@@ -38,7 +38,8 @@ SRCS =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_split4.c ft_dnbr.c ft_dput.c ft_dprintf.c ft_gc_ctx_create.c \
 		ft_gc_ctx_delete.c ft_gc_ctx_transfer.c ft_gc_ctx_wild_manip.c \
 		ft_gc_global.c ft_gc_ptr_utils.c ft_gc_static.c ft_split_token.c \
-		ft_strncpy.c ft_strndup.c ft_split_space.c ft_strcpy2.c
+		ft_strncpy.c ft_strndup.c ft_split_space.c ft_strcpy2.c ft_list.c \
+		ft_split_cub.c \
 
 # Fichiers objets mandatory correspondants
 OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))

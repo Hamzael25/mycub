@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 14:44:23 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/12/01 20:20:18 by hamzaelouar      ###   ########.fr       */
+/*   Created: 2023/12/01 19:12:43 by hamzaelouar       #+#    #+#             */
+/*   Updated: 2023/12/01 19:15:24 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/cub3d.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	key_press_hook(int keycode, t_data *data)
 {
-	unsigned char	*s1_bis;
-	unsigned char	*s2_bis;
-	size_t			i;
+	if (keycode >= 0 && keycode < 65365)
+		data->play->key_states[keycode] = true;
+	return (0);
+}
 
-	i = 0;
-	s1_bis = (unsigned char *)s1;
-	s2_bis = (unsigned char *)s2;
-	while (i != n && (s1_bis[i] != '\0' || s2_bis[i] != '\0'))
-	{
-		if (s1_bis[i] != s2_bis[i])
-		{
-			return (s1_bis[i] - s2_bis[i]);
-		}
-		i++;
-	}
+int	key_release_hook(int keycode, t_data *data)
+{
+	if (keycode >= 0 && keycode < 65365)
+		data->play->key_states[keycode] = false;
 	return (0);
 }
