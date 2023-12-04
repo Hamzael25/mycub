@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/12/02 19:50:03 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 17:32:43 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ int	parsing_map(t_parse *parse)
 		if (check_char(parse->map[i], &p, parse))
 			return (1);
 		if (ft_strchr(parse->map[i], ' '))
-			replace_space(parse->map[i]);
+			space_to_x(parse->map[i]);
 		i++;
 	}
 	if (p != 1)
 		return (1);
-	if (only_wall(parse->map[0])
-		|| only_wall(parse->map[ft_strlen_dtab(parse->map) - 1])
+	if (no_wall_or_space(parse->map[0])
+		|| no_wall_or_space(parse->map[ft_strlen_dtab(parse->map) - 1])
 		|| check_wall(parse, 0, 0, 0) || check_player(parse->map))
 		return (1);
 	return (0);

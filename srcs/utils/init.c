@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/12/02 16:35:57 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 15:19:36 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ int	init_struct_data(t_data *data)
 	data->play->posy = (get_position(0, data->parse->map) * 30) + 15;
 	data->play->px = cos(data->play->pa) * 5;
 	data->play->py = sin(data->play->pa) * 5;
-	get_dimention(data->parse);
+	get_map_size(data->parse);
 	data->parse->wmap -= 1;
 	if (data->parse->hmap > data->parse->wmap)
-		data->parse->biger = data->parse->hmap;
+		data->parse->gmap = data->parse->hmap;
 	else
-		data->parse->biger = data->parse->wmap;
+		data->parse->gmap = data->parse->wmap;
 	return (1);
 }
 
@@ -82,7 +82,7 @@ int	get_position(int flg, char **map)
 	return (0);
 }
 
-void	get_dimention(t_parse *parse)
+void	get_map_size(t_parse *parse)
 {
 	int	i;
 	int	current_length;

@@ -6,7 +6,7 @@
 #    By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/03 17:38:07 by hamzaelouar       #+#    #+#              #
-#    Updated: 2023/12/03 17:38:10 by hamzaelouar      ###   ########.fr        #
+#    Updated: 2023/12/04 12:21:05 by hamzaelouar      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ HEADER = $(INC_DIR)/cub3d.h
 
 # Chemins complets des fichiers source pour chaque sous-dossier
 SRCS_MAP = $(addprefix $(SRC_DIR)/map/, check_map.c)
-SRCS_PLAY = $(addprefix $(SRC_DIR)/play/, game.c key.c move.c raycasting.c raycast.c draw.c stage.c)
+SRCS_PLAY = $(addprefix $(SRC_DIR)/play/, game.c key.c move.c raycasting.c raycast.c stage.c)
 SRCS_PARSER = $(addprefix $(SRC_DIR)/parser/, file.c parsing.c variable.c)
 SRCS_UTILS = $(addprefix $(SRC_DIR)/utils/, init.c free.c parsing_utils.c utils.c raycasting_utils.c)
 SRCS_MAIN = $(addprefix $(SRC_DIR)/, main.c)

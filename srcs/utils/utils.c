@@ -6,13 +6,13 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 02:18:05 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2023/11/27 02:18:06 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 17:35:19 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	is_space(char *str)
+int	space_or_x(char *str)
 {
 	while (*str)
 	{
@@ -26,12 +26,12 @@ int	is_space(char *str)
 	return (1);
 }
 
-int	nb_of_space(char **str, int *i)
+int	count_space(char **str, int *i)
 {
 	int	cpt;
 
 	cpt = 0;
-	while (is_space(str[*i]))
+	while (space_or_x(str[*i]))
 	{
 		(*i)++;
 		cpt++;

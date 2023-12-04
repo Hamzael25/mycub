@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/12/02 20:57:55 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 17:33:20 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	check_char(char *str, int *p, t_parse *parse)
 	return (0);
 }
 
-void	replace_space(char *line)
+void	space_to_x(char *line)
 {
 	while (*line)
 	{
@@ -72,7 +72,7 @@ void	replace_space(char *line)
 	}
 }
 
-int	only_wall(char *str)
+int	no_wall_or_space(char *str)
 {
 	while (*str && *str != '\n')
 	{

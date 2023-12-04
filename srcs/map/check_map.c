@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 02:19:56 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2023/12/02 19:35:06 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 17:24:26 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_wall(t_parse *parse, int i, int j, int save)
 {
-	save = nb_of_space(parse->map, &i);
+	save = count_space(parse->map, &i);
 	while (parse->map[i])
 	{
 		j = 0;

@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/12/02 16:14:15 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 12:39:55 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	free_win(t_data *data, int mod)
 			mlx_destroy_image(data->win->mlx, data->ea_text->img);
 		if (data->win->img && mod)
 			mlx_destroy_image(data->win->mlx, data->win->img);
-		if (data->win->mlx_win)
-			mlx_destroy_window(data->win->mlx, data->win->mlx_win);
+		if (data->win->mlx_w)
+			mlx_destroy_window(data->win->mlx, data->win->mlx_w);
 		if (data->win->mlx)
 			mlx_destroy_display(data->win->mlx);
 		if (data->win->mlx)

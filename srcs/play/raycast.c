@@ -1,54 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast_v.c                                        :+:      :+:    :+:   */
+/*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:21:23 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2023/12/02 16:24:23 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 21:19:55 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	check_vertical_line(t_stage *s, t_data *d)
+void	check_vertical(t_stage *s, t_data *d)
 {
-	looking_vertical(s, d);
+	calcul_vertical(s, d);
 	init_vertical(s, d);
-	while (s->dof < d->parse->biger)
+	while (s->measure < d->parse->gmap)
 	{
-		s->mx = (int)(s->rx / TILE_SIZE);
+		s->mapx = (int)(s->rx / TILE_SIZE);
 		s->my = (int)(s->ry / TILE_SIZE);
-		if (s->mx >= 0 && s->mx < d->parse->wmap && s->my >= 0
+		if (s->mapx >= 0 && s->mapx < d->parse->wmap && s->my >= 0
 			&& s->my < d->parse->hmap
-			&& s->mx < (int)ft_strlen(d->parse->map[s->my])
+			&& s->mapx < (int)ft_strlen(d->parse->map[s->my])
 			&& s->my < (int)ft_tablen(d->parse->map)
-			&& d->parse->map[s->my][s->mx] == '1')
+			&& d->parse->map[s->my][s->mapx] == '1')
 		{
 			s->vx = s->rx;
 			s->vy = s->ry;
-			s->dis_v = dist(d->play->posx, d->play->posy, s->vx, s->vy);
+			s->vdist = calcul_dist(d->play->posx, d->play->posy, s->vx, s->vy);
 			break ;
 		}
 		else
 		{
 			s->rx += s->xo;
 			s->ry += s->yo;
-			s->dof += 1;
+			s->measure += 1;
 		}
 	}
 }
 
 void	init_vertical(t_stage *s, t_data *d)
 {
-	s->dof = 0;
+	s->measure = 0;
 	s->vx = d->play->posx;
 	s->vy = d->play->posy;
-	s->dis_v = 1000000;
+	s->vdist = 1000000;
 }
 
-void	looking_vertical(t_stage *stage, t_data *data)
+void	calcul_vertical(t_stage *stage, t_data *data)
 {
 	float	n_tan;
 
@@ -73,6 +73,6 @@ void	looking_vertical(t_stage *stage, t_data *data)
 	{
 		stage->rx = data->play->posx;
 		stage->ry = data->play->posy;
-		stage->dof = data->parse->biger;
+		stage->measure = data->parse->gmap;
 	}
 }

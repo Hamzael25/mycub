@@ -6,7 +6,7 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:49:06 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2023/12/02 18:32:28 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 20:46:35 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,88 +14,87 @@
 
 void	move(t_data *data)
 {
-	float	move_speed;
-	float	rotate_speed;
-	float	collision_margin;
-	float	newx;
-	float	newy;
+	float	smove;
+	float	srotate;
+	float	safe_marg;
+	float	updx;
+	float	updy;
 
-	move_speed = 0.6;
-	rotate_speed = 0.04;
-	collision_margin = 6.0;
-	newx = data->play->posx;
-	newy = data->play->posy;
-	check_key_and_set_new_position(data, move_speed, &newx, &newy);
-	check_collision(data, newx, newy, collision_margin);
-	check_key_and_set_new_angle(data, rotate_speed);
-	check_esc_key(data);
+	smove = 0.6;
+	srotate = 0.04;
+	safe_marg = 6.0;
+	updx = data->play->posx;
+	updy = data->play->posy;
+	update_position(data, smove, &updx, &updy);
+	check_collision(data, updx, updy, safe_marg);
+	update_angle(data, srotate);
+	handle_esc_key(data);
 }
 
-void	check_key_and_set_new_position(t_data *data, float moveSpeed, \
-float *newX, float *newY)
+void	update_position(t_data *data, float smove, float *updx, float *updy)
 {
-	if (data->play->key_states[W])
+	if (data->play->keys[W])
 	{
-		*newX += data->play->px * moveSpeed;
-		*newY += data->play->py * moveSpeed;
+		*updx += data->play->px * smove;
+		*updy += data->play->py * smove;
 	}
-	if (data->play->key_states[S])
+	if (data->play->keys[S])
 	{
-		*newX -= data->play->px * moveSpeed;
-		*newY -= data->play->py * moveSpeed;
+		*updx -= data->play->px * smove;
+		*updy -= data->play->py * smove;
 	}
-	if (data->play->key_states[A])
+	if (data->play->keys[A])
 	{
-		*newX -= cos(data->play->pa + PI / 2) * moveSpeed * 3;
-		*newY -= sin(data->play->pa + PI / 2) * moveSpeed * 3;
+		*updx -= cos(data->play->pa + PI / 2) * smove * 3;
+		*updy -= sin(data->play->pa + PI / 2) * smove * 3;
 	}
-	if (data->play->key_states[D])
+	if (data->play->keys[D])
 	{
-		*newX += cos(data->play->pa + PI / 2) * moveSpeed * 3;
-		*newY += sin(data->play->pa + PI / 2) * moveSpeed * 3;
+		*updx += cos(data->play->pa + PI / 2) * smove * 3;
+		*updy += sin(data->play->pa + PI / 2) * smove * 3;
 	}
 }
 
-void	check_collision(t_data *data, float newX, float newY, \
-float c_margin)
+void	check_collision(t_data *data, float updx, float updy, \
+float s_marg)
 {
-	if (!is_collision(data, newX, data->play->posy) && \
-	!is_collision(data, newX - c_margin, data->play->posy - c_margin) && \
-	!is_collision(data, newX - c_margin, data->play->posy + c_margin) && \
-	!is_collision(data, newX + c_margin, data->play->posy - c_margin) && \
-	!is_collision(data, newX + c_margin, data->play->posy + c_margin))
-		data->play->posx = newX;
-	if (!is_collision(data, data->play->posx, newY) && \
-	!is_collision(data, data->play->posx - c_margin, newY - c_margin) && \
-	!is_collision(data, data->play->posx - c_margin, newY + c_margin) && \
-	!is_collision(data, data->play->posx + c_margin, newY - c_margin) && \
-	!is_collision(data, data->play->posx + c_margin, newY + c_margin))
-		data->play->posy = newY;
+	if (!collision_detect(data, updx, data->play->posy) && \
+	!collision_detect(data, updx - s_marg, data->play->posy - s_marg) && \
+	!collision_detect(data, updx - s_marg, data->play->posy + s_marg) && \
+	!collision_detect(data, updx + s_marg, data->play->posy - s_marg) && \
+	!collision_detect(data, updx + s_marg, data->play->posy + s_marg))
+		data->play->posx = updx;
+	if (!collision_detect(data, data->play->posx, updy) && \
+	!collision_detect(data, data->play->posx - s_marg, updy - s_marg) && \
+	!collision_detect(data, data->play->posx - s_marg, updy + s_marg) && \
+	!collision_detect(data, data->play->posx + s_marg, updy - s_marg) && \
+	!collision_detect(data, data->play->posx + s_marg, updy + s_marg))
+		data->play->posy = updy;
 }
 
-void	check_key_and_set_new_angle(t_data *data, float rotateSpeed)
+void	update_angle(t_data *data, float srotate)
 {
-	if (data->play->key_states[RIGHT])
+	if (data->play->keys[LEFT])
 	{
-		data->play->pa += rotateSpeed;
-		if (data->play->pa > 2 * PI)
-			data->play->pa -= 2 * PI;
-		data->play->px = cos(data->play->pa) * 5;
-		data->play->py = sin(data->play->pa) * 5;
-	}
-	if (data->play->key_states[LEFT])
-	{
-		data->play->pa -= rotateSpeed;
+		data->play->pa -= srotate;
 		if (data->play->pa < 0)
 			data->play->pa += 2 * PI;
 		data->play->px = cos(data->play->pa) * 5;
 		data->play->py = sin(data->play->pa) * 5;
 	}
+	if (data->play->keys[RIGHT])
+	{
+		data->play->pa += srotate;
+		if (data->play->pa > 2 * PI)
+			data->play->pa -= 2 * PI;
+		data->play->px = cos(data->play->pa) * 5;
+		data->play->py = sin(data->play->pa) * 5;
+	}
 }
 
-void	check_esc_key(t_data *data)
+void	handle_esc_key(t_data *data)
 {
-	if (data->play->key_states[ESC])
+	if (data->play->keys[ESC])
 	{
 		ft_free_all(data, 1);
 		exit(0);

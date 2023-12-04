@@ -6,13 +6,13 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:26:01 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2023/12/02 20:58:00 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 14:58:52 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-float	dist(float ax, float ay, float bx, float by)
+float	calcul_dist(float ax, float ay, float bx, float by)
 {
 	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
 }
@@ -23,9 +23,9 @@ void	put_pixel(t_win *draw, int x, int y, int color)
 		((int *)draw->addr)[y * (draw->line_length >> 2) + x] = color;
 }
 
-void	define_which_sprite(t_data *data, t_sprite **sprite, float ra)
+void	determine_sprite(t_data *data, t_sprite **sprite, float ra)
 {
-	if (data->stage->h_redded)
+	if (data->stage->height_rd)
 	{
 		if (ra >= 0 && ra < PI)
 			*sprite = data->so_text;

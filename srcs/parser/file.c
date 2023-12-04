@@ -6,16 +6,11 @@
 /*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2023/12/02 18:02:30 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2023/12/04 20:52:31 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-int	get_cell_map(t_map **tmp_map, char *line);
-int	get_map(t_map **tmp_map, t_parse *parse);
-int	check_variable(t_parse *parse);
-int	check_valid_file(t_parse *parse, int fd);
 
 int	variable(char *line, t_parse *parse, int *flg)
 {
@@ -33,7 +28,7 @@ int	variable(char *line, t_parse *parse, int *flg)
 	}
 	else
 		return (ft_free_tab(split_line), 1);
-	if (!check_variable(parse))
+	if (!valid_variable(parse))
 		*flg = 1;
 	return (ft_free_tab(split_line), 0);
 }
@@ -78,7 +73,7 @@ int	get_map(t_map **tmp_map, t_parse *parse)
 	return (0);
 }
 
-int	check_variable(t_parse *parse)
+int	valid_variable(t_parse *parse)
 {
 	if (!parse->ea || !parse->no || !parse->so
 		|| !parse->we || !parse->floor || !parse->ceiling)
@@ -102,7 +97,7 @@ int	check_valid_file(t_parse *parse, int fd)
 		line = get_next_line_gnl(fd);
 		if (!line)
 		{
-			if (check_variable(parse) || get_map(&tmp_map, parse))
+			if (valid_variable(parse) || get_map(&tmp_map, parse))
 				return (ft_putstr_fd("Error in file\n", 2), \
 					lstclear_map(&tmp_map), 1);
 			return (free(line), lstclear_map(&tmp_map), 0);
